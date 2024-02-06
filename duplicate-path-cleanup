@@ -1,0 +1,15 @@
+echo
+echo '###################################################'
+echo  Current Paths if Duplicates Exists, Removed Below
+echo '###################################################'
+echo
+echo $PATH | awk -v RS=: -v ORS=: '!seen[$0]++' | sed 's/:$//'
+cleaned_path=$(echo $PATH | awk -v RS=: -v ORS=: '!seen[$0]++' | sed 's/:$//')
+echo
+echo '############################################'
+echo  Duplicate Paths Remove... Clean Path Below
+echo '############################################'
+echo
+echo $cleaned_path
+echo
+export PATH=$cleaned_path
